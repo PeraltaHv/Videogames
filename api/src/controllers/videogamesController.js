@@ -5,6 +5,7 @@ const {API_KEY } = process.env;
 const { Op } = require('sequelize');
 
 const createVideogame = async (
+    
     name,
     description,
     platforms,
@@ -13,6 +14,7 @@ const createVideogame = async (
     rating,
     genres
 ) => {
+    console.log("Valor de name recibido:", name);
     const newVideogame = await Videogames.create({
         name,
         description,
@@ -95,6 +97,7 @@ const getAllVideogames = async (name)=>{
     const videogamesApi= await getVideogamesApi()
     const allVideogames = [...videogamesDb,...videogamesApi]
 console.log(name);
+console.log(allVideogames);
     if(name){
         const videogamesFilter = allVideogames.filter(
             (videogame)=>videogame.name.toLowerCase().includes(name.toLowerCase())

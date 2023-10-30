@@ -4,8 +4,10 @@ const{
    getAllVideogamesById
 }= require ("../controllers/videogamesController")
 
+
 const createVideogamesHandler = async(req,res)=>{
     try {
+        console.log("Datos recibidos en el backend:", req.body);
         const{
             name,
             description,
@@ -47,7 +49,7 @@ const getDetailHandler = async(req,res) =>{
         const response = await getAllVideogamesById(id,source)
         res.status(200).json(response)
     } catch (error) {
-        res.status(400).json({error:error.messagge})
+        res.status(400).json({error:error.message})
     }
    
 }

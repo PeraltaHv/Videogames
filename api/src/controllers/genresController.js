@@ -20,8 +20,7 @@ if(!genresDb.length){
    
    return genres
     }
-   
-  
+ 
   
 }
   return genresDb.map((g)=>g.name)

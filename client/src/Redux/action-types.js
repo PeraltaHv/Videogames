@@ -1,0 +1,3 @@
+export const GET_GENRES = "GET_GENRES"
+export const GET_PLATFORMS = "GET_PLATFORMS"
+export const SEARCH_VIDEOGAME = "SEARCH_VIDEOGAME"
