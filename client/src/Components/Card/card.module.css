@@ -1,0 +1,10 @@
+.cardcont{
+    width: 15rem;
+    background-color: chocolate;
+    border:solid 2px black;
+    margin:15px
+}
+
+.cardinfocont img{
+    width: 10rem;
+}

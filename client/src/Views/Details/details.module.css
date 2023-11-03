@@ -1,0 +1,10 @@
+.detailscont{
+    width: 15rem;
+    background-color: chocolate;
+    border:solid 2px black;
+    margin:15px
+}
+
+.detailsinfocont img{
+    width: 10rem;
+}

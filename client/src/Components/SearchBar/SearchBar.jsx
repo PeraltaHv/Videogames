@@ -14,13 +14,14 @@ const SearchBar = () => {
   const handleSubmit = (event)=>{
     event.preventDefault()
     dispatch(searchVideogame(videogame))
+    document.getElementById("search").value=""
   }
 
   
     return (
     <div>
       <form onSubmit={handleSubmit}>
-           <input  onChange={handleChange} type="text"/>
+           <input id="search" onChange={handleChange} type="text"/>
            <input  type="submit"/>
       </form>
     </div>

@@ -15,6 +15,12 @@ const createVideogame = async (
     genres
 ) => {
     console.log("Valor de name recibido:", name);
+  
+    if (Array.isArray(genres) && typeof genres[0] === 'string') {
+        // Convertir los strings en objetos con el formato correcto
+        genres = genres.map(genre => ({ name: genre }));
+    }
+  
     const newVideogame = await Videogames.create({
         name,
         description,
@@ -22,6 +28,7 @@ const createVideogame = async (
         background_image,
         released,
         rating,
+        
     });
 
     const genreNames = genres.map(genre => genre.name);
@@ -68,10 +75,39 @@ const videogamesDb = await Videogames.findAll({
 return infoEstructurada
 }
 
-const getVideogamesApi = async ()=>{
-    const{data}= await axios.get(
-       `https://api.rawg.io/api/games?key=${API_KEY}`
-        )
+// const getVideogamesApi = async ()=>{
+//     const{data}= await axios.get(
+//        `https://api.rawg.io/api/games?key=${API_KEY}`
+//         )
+//         const videogamesApi = data.results;
+
+//         const infoEstructurada = videogamesApi.map((videogame) => {
+//             return {
+//                 id: videogame.id,
+//                 name: videogame.name,
+//                 description: videogame.description,
+//                 platforms: videogame.platforms.map(platform => platform.platform.name),
+//                 background_image: videogame.background_image,
+//                 released: videogame.released,
+//                 rating: videogame.rating,
+//                 genres: videogame.genres.map(genre => genre.name)
+//             };
+//         });
+
+//         return infoEstructurada;
+        
+        
+// }
+
+const getVideogamesApi = async () => {
+    let allVideogames = [];
+
+    // Bucle para recorrer las páginas de la API (supongamos que queremos 4 páginas)
+    for (let page = 1; page <= 5; page++) {
+        const { data } = await axios.get(
+            `https://api.rawg.io/api/games?key=${API_KEY}&page=${page}`
+        );
+
         const videogamesApi = data.results;
 
         const infoEstructurada = videogamesApi.map((videogame) => {
@@ -87,10 +123,13 @@ const getVideogamesApi = async ()=>{
             };
         });
 
-        return infoEstructurada;
-        
-        
-}
+        // Concatenar los resultados de esta página al array principal
+        allVideogames = [...allVideogames, ...infoEstructurada];
+    }
+
+    return allVideogames;
+};
+
 
 const getAllVideogames = async (name)=>{
     const videogamesDb = await getVideogamesDb()

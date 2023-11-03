@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_GENRES ,GET_PLATFORMS, SEARCH_VIDEOGAME} from "./action-types"
+import { GET_GENRES ,GET_PLATFORMS, SEARCH_VIDEOGAME,GET_VIDEOGAME,GET_DETAILS,PAGINATE} from "./action-types"
 
   
 export function postVideogame(form){
@@ -65,3 +65,46 @@ export function searchVideogame(videogame){
   }
     }
 }
+export function getVideogame(videogame){
+    return async function (dispatch){
+  try {
+
+    const response =await axios.get(`http://localhost:3001/videogames`)
+    dispatch({
+      type:GET_VIDEOGAME,
+      payload:response.data
+    })
+    console.log(response); 
+    
+
+} catch (error) {
+    console.log(error);
+  }
+    }
+}
+export function getVideogameById(id){
+    return async function (dispatch){
+  try {
+
+    const response =await axios.get(`http://localhost:3001/videogames/${id}`)
+    dispatch({
+      type:GET_DETAILS,
+      payload:response.data
+    })
+    console.log(response); 
+    
+
+} catch (error) {
+    console.log(error);
+  }
+    }
+}
+ export function page(order){
+  return  function(dispatch){
+    dispatch({
+      type:PAGINATE,
+      payload:order
+    })
+  }
+
+ }

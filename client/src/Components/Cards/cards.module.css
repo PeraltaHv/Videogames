@@ -1,0 +1,4 @@
+.cardscont{
+    display: flex;
+    flex-wrap: wrap;
+}

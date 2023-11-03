@@ -32,16 +32,18 @@ const Create = () => {
   })
 
   const [errors, setErrors] = useState({
-    name: "",
-    background_image: "",
-    description: "",
-    platforms: [],
-    released: "",
+    name: "Campo requerido",
+    background_image: "Campo requerido",
+    description: "Campo requerido",
+    //platforms: [],
+    released: "Campo requerido",
     rating: "",
-    genres: []
+   // genres: []
  
 
   })
+
+  console.log(form);
 
   console.log(errors);
   const validate = (form, name) => {
@@ -110,6 +112,20 @@ const Create = () => {
 
   }
   
+ const disabledFunction = ()=>{
+  let aux =true;
+  for (let error in errors){
+    if(errors[error]==="") aux = false
+    else{
+      aux=true;
+      break
+    }
+  }
+  return aux;
+}
+ 
+
+ 
   const handleSubmit=(event)=>{
    event.preventDefault()
    console.log(form);
@@ -126,7 +142,7 @@ const Create = () => {
         <h1>Crea tu videogame</h1>
 
         <label htmlFor="name">name:</label>
-        <input placeholder='name' name="name" onChange={handleChange} type="text" />
+        <input placeholder='Nombre' name="name" onChange={handleChange} type="text" />
         <span>{errors.name}</span>
 
         <label htmlFor="background_image">Imagen:</label>
@@ -138,7 +154,7 @@ const Create = () => {
         <span>{errors.description}</span>
         
         <label htmlFor="released">Fecha:</label>
-        <input placeholder='Descripcion entre 20 y 100 caracteres' name="released" onChange={handleChange} type="text" />
+        <input placeholder='Fecha de lanzamiento' name="released" onChange={handleChange} type="text" />
         <span>{errors.released}</span>
 
       
@@ -163,7 +179,7 @@ const Create = () => {
 
         </select>
         <div>
-          <button className={styles.formbutton} type="submit">
+          <button  disabled={disabledFunction()} className={styles.formbutton} type="submit">
             Crear Videogame
           </button>
         </div>

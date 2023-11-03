@@ -1,3 +1,6 @@
 export const GET_GENRES = "GET_GENRES"
 export const GET_PLATFORMS = "GET_PLATFORMS"
 export const SEARCH_VIDEOGAME = "SEARCH_VIDEOGAME"
+export const GET_VIDEOGAME = "GET_VIDEOGAME"
+export const GET_DETAILS = "GET_DETAILS"
+export const PAGINATE = "PAGINATE "
