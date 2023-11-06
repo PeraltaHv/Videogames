@@ -1,4 +1,12 @@
 .cardscont{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* Cuatro columnas de igual tamaño */
+    gap: 20px;
+    /* Espacio entre las tarjetas */
+    justify-content: space-between;
+    /* Alinear las columnas al espacio disponible */
+   margin-left: 50px;
+   margin-right: 40px;
+   
 }

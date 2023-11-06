@@ -1,0 +1,92 @@
+body::after {
+
+    content: "";
+    background-image: url("../../imagenes/home.jpg");
+    opacity: 0.85; /* Cambia este valor para ajustar la transparencia */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+    background-position: top center;
+    background-size: 100% 100%;
+
+
+}
+
+
+.contfilters{
+    background-color:  #0f100f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    width: 100%;
+}
+.contfilter{
+    /* background-color:  #a28e8efa; */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 50px;
+    gap: 10px;
+}
+.contord{
+    /* background-color:  #6a2525; */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    gap: 20px;
+}
+.ordrating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    gap: 20px;
+}
+
+.ordalfab{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    gap: 20px;
+}
+.contorigin{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    gap: 20px;
+}
+
+.contgenres{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    gap: 20px;
+}
+.contpage{
+    /* background-color: rgb(112, 186, 186); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    gap: 20px;
+    width: 50%;
+}

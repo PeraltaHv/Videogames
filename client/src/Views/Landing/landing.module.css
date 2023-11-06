@@ -1,0 +1,25 @@
+.background {
+  
+    height: 100vh;
+    background-image: url("../..//imagenes/landing.jpg");
+    background-position: top center;
+    background-size: cover;
+ 
+}
+.button {
+
+    background-color: rgb(10, 9, 9);
+     border: rgb(171, 32, 108) solid 6px;
+     color: #e2e2e2;
+     cursor: pointer;
+     font-size: 2em;
+     padding: .75rem;
+     border-radius: 10px;
+     margin-top: 600px;
+     margin-right: 10px;
+    
+   }
+   .button:hover {
+    transform: translateY(2px);
+  }
+  

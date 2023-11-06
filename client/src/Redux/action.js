@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_GENRES ,GET_PLATFORMS, SEARCH_VIDEOGAME,GET_VIDEOGAME,GET_DETAILS,PAGINATE} from "./action-types"
+import { GET_GENRES ,GET_PLATFORMS, SEARCH_VIDEOGAME,GET_VIDEOGAME,GET_DETAILS,PAGINATE,FILTER_BY_GENRE,RESET,FILTER_BY_ORIGIN,ORD_ALFAB,ORD_RATING} from "./action-types"
 
   
 export function postVideogame(form){
@@ -108,3 +108,58 @@ export function getVideogameById(id){
   }
 
  }
+ export function filterGenre(order){ 
+  return async function(dispatch){
+      try {
+      dispatch(
+          {type:FILTER_BY_GENRE,
+          payload: order}
+      )
+      } catch (error) {
+          alert(error.response.data.error)
+      }
+  }
+}
+export function restart(){ 
+  return async function(dispatch){
+      try {
+      dispatch(
+          {type:RESET}
+      )
+      } catch (error) {
+          alert(error.response.data.error)
+      }
+  }
+}
+export function filterOrigin(order){ // order <= API || DB
+  return async function(dispatch){
+      try {
+      dispatch(
+          {type:FILTER_BY_ORIGIN,
+          payload: order}
+      )
+      } catch (error) {
+          alert(error.response.data.error)
+      }
+  }
+}
+export function ordAlfabeticamente(order){ // order <= prev || next
+  return async function(dispatch){
+
+      dispatch(
+          {type:  ORD_ALFAB,
+          payload: order}
+      )
+      
+  }
+}
+export function ordenarRating(order){
+  return async function(dispatch){
+
+      dispatch(
+          {type:  ORD_RATING,
+          payload: order}
+      )
+      
+  }
+}
