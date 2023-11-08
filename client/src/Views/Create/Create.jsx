@@ -1,24 +1,24 @@
 import React, { useState } from 'react'
 import styles from "./create.module.css"
 import { getGenres, getPlatforms, postVideogame } from '../../Redux/action'
-import {useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from 'react'
 
 
 
 const Create = () => {
-  
-  const dispatch =useDispatch()
-   const allGenres = useSelector(state=>state.allGenres)
-   const allPlatforms = useSelector(state=>state.allPlatforms)
- 
-  useEffect(()=>{
- dispatch(getGenres())
- dispatch(getPlatforms())
-  
-},[])
-  
-  
+
+  const dispatch = useDispatch()
+  const allGenres = useSelector(state => state.allGenres)
+  const allPlatforms = useSelector(state => state.allPlatforms)
+
+  useEffect(() => {
+    dispatch(getGenres())
+    dispatch(getPlatforms())
+
+  }, [])
+
+
 
   const [form, setForm] = useState({
     name: "",
@@ -35,11 +35,11 @@ const Create = () => {
     name: "Campo requerido",
     background_image: "Campo requerido",
     description: "Campo requerido",
-    //platforms: [],
+    platforms: [],
     released: "Campo requerido",
     rating: "",
-   // genres: []
- 
+    genres: []
+
 
   })
 
@@ -76,15 +76,20 @@ const Create = () => {
         if (form.rating < 1 || form.rating > 5) setErrors({ ...errors, rating: "elija entre 1 y 5 " })
         else setErrors({ ...errors, rating: "" })
         break
-       
-        default:
-   
-      }
+
+      
+
+
+
+
+      default:
+
+    }
 
   }
 
 
- 
+
   const handleChange = (event) => {
 
     if (event.target.name === "genres") {
@@ -92,12 +97,15 @@ const Create = () => {
         ...form,
         genres: [...form.genres, event.target.value]
       })
-    } else if (event.target.name === "platforms") {
+    } 
+    
+    if (event.target.name === "platforms") {
       setForm({
         ...form,
         platforms: [...form.platforms, event.target.value]
       })
     }
+
     else {
       setForm({
         ...form,
@@ -111,28 +119,25 @@ const Create = () => {
 
 
   }
-  
- const disabledFunction = ()=>{
-  let aux =true;
-  for (let error in errors){
-    if(errors[error]==="") aux = false
-    else{
-      aux=true;
-      break
-    }
-  }
-  return aux;
-}
- 
 
- 
-  const handleSubmit=(event)=>{
-   event.preventDefault()
-   console.log(form);
-   dispatch(postVideogame(form))
-  
- 
- 
+  const disabledFunction = () => {
+    let aux = true;
+    for (let error in errors) {
+      if (errors[error] === "") aux = false
+      else {
+        aux = true;
+        break
+      }
+    }
+    return aux;
+  }
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log(form);
+    dispatch(postVideogame(form))
+
   }
 
   return (
@@ -152,48 +157,39 @@ const Create = () => {
         <label htmlFor="description">Descripción:</label>
         <input placeholder='Descripcion entre 20 y 100 caracteres' name="description" onChange={handleChange} type="text" />
         <span>{errors.description}</span>
-        
+
         <label htmlFor="released">Fecha:</label>
         <input placeholder='Fecha de lanzamiento' name="released" onChange={handleChange} type="text" />
         <span>{errors.released}</span>
 
-      
-      
-        {/* <label htmlFor="fecha" >Seleccione una fecha <span style={{ color: "red" }}>{errors.fechaVacio}</span></label>
-        <input type="date"  name="fecha"  onChange={handleChange} />
-        <span style={{ color: "red" }}>{errors.fecha}</span>
-        <span style={{ color: "red" }}>{errors.fechaAnterior}</span> */}
 
-        <input type="number"  name="rating" 
+
+       
+
+        <input type="number" name="rating"
           onChange={handleChange} />
         <span style={{ color: "red" }}>{errors.rating}</span>
 
 
-       
+
         <select onChange={handleChange} name="platforms" id="">
-        {allPlatforms.map(platform=><option value={platform} >{platform}</option>)}
+          {allPlatforms.map(platform => <option value={platform} >{platform}</option>)}
         </select>
-     
+
         <select onChange={handleChange} name="genres" id="">
-             {allGenres.map(genre=><option value={genre} >{genre}</option>)}
+          {allGenres.map(genre => <option value={genre} >{genre}</option>)}
 
         </select>
+        <span>{errors.genres}</span>
         <div>
-          <button  disabled={disabledFunction()} className={styles.formbutton} type="submit">
+          <button disabled={disabledFunction()} className={styles.formbutton} type="submit">
             Crear Videogame
           </button>
         </div>
-     
+
       </form>
     </div>
   )
 }
 
 export default Create
-// Nombre.
-// Imagen.
-// Descripción.
-// Plataformas.
-// Fecha de lanzamiento.
-// Rating.
-// Posibilidad de seleccionar/agregar varios géneros en simultáneo.

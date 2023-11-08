@@ -1,4 +1,4 @@
-import { GET_GENRES, GET_PLATFORMS, SEARCH_VIDEOGAME, GET_VIDEOGAME, GET_DETAILS, PAGINATE, FILTER_BY_GENRE, RESET,FILTER_BY_ORIGIN ,ORD_ALFAB, ORD_RATING} from "./action-types";
+import { GET_GENRES,SET_PAGE, CLEAN_DETAIL,GET_PLATFORMS, SEARCH_VIDEOGAME, GET_VIDEOGAME, GET_DETAILS, PAGINATE, FILTER_BY_GENRE, RESET,FILTER_BY_ORIGIN ,ORD_ALFAB, ORD_RATING} from "./action-types";
 
 let initialState = {
     allVideogames: [],
@@ -8,7 +8,7 @@ let initialState = {
     details: {},
     videogamesFiltered: [],
     currentPage: 0,
-  
+
     filters: false
 
 
@@ -84,7 +84,7 @@ function rootReducer(state = initialState, action) {
           }
 
 
-
+         console.log("payload detail",action.payload);
         case GET_DETAILS:
             return {
                 ...state,
@@ -245,8 +245,15 @@ function rootReducer(state = initialState, action) {
                 
                
             }
-       
-       
+           case CLEAN_DETAIL:
+            return{
+                ...state,
+                details:{}
+            }
+                  
+            case SET_PAGE:
+               
+           
             default: return state
     }
 

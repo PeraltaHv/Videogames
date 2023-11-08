@@ -2,7 +2,7 @@ import React from 'react'
 import Cards from "../../Components/Cards/Cards"
 import { getVideogame } from "../../Redux/action"
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect,useState ,CSSProperties } from 'react'
 import { page } from "../../Redux/action"
 import { getGenres } from '../../Redux/action'
 import { filterGenre } from '../../Redux/action'
@@ -11,19 +11,33 @@ import { filterOrigin } from '../../Redux/action'
 import { ordAlfabeticamente } from '../../Redux/action'
 import { ordenarRating } from '../../Redux/action'
 import styles from "./home.module.css"
+import ClipLoader
+from "react-spinners/ClipLoader";
+
+
 
 const Home = () => {
+ 
 
-  const dispatch = useDispatch()
+  const [loading , setloading] = useState(true)
+  
+   const dispatch = useDispatch()
 
   const allVideogames = useSelector(state => state.allVideogames)
-  const currentPage = useSelector(state => state.currentPage)
   const allGenres = useSelector(state => state.allGenres)
 
-  console.log(allVideogames);
+ 
+ 
   useEffect(() => {
     dispatch(getVideogame())
     dispatch(getGenres())
+  }, [])
+ 
+  useEffect(() => {
+  setloading(true)
+  setTimeout(()=>{
+    setloading(false)
+  },5000)
   }, [])
 
   const pagination = (event) => {
@@ -106,9 +120,23 @@ const Home = () => {
     
                 
                 </div>
-                <div>  
+                <div  className={styles.contcards}>  
+                 { loading?
+                        <ClipLoader
+
+                        color={"white"}
+                       
+                        loading={loading}
+                        size={200}
+                        aria-label="Loading Spinner"eta
+                        data-testid="loader"
+                      
+                      /> :
                      <Cards allVideogames={allVideogames} />
-                </div>
+                      
+                 }
+                
+                     </div>
          
 
     </div>

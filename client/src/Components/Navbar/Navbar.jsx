@@ -3,7 +3,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import { restart } from '../../Redux/action'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-
+import styles from "./navbar.module.css"
 
 
 const Navbar = () => {
@@ -16,16 +16,14 @@ const Navbar = () => {
 
  
   return (
-    <div>
-     
-      <div className='nav-cont-links'>
-            <Link onClick={reset} to={"/home"}>Home</Link>
-            <Link  to={"/create"}>Form</Link>
-        </div>
-  
-   <SearchBar/>
+    <div className={styles.contnavbar}>
+      <div className={styles.contlinks}>
+        <Link onClick={reset} to={"/home"}>Home</Link>
+        <Link to={"/create"}>Crear Videogame</Link>
+      </div>
+      <SearchBar />
     </div>
-  )
-}
-
+  );
+  
+  }
 export default Navbar

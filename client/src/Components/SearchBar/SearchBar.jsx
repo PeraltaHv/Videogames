@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { searchVideogame } from '../../Redux/action'
 import { useDispatch } from 'react-redux'
+import styles from "./searchbar.module.css"
 
 const SearchBar = () => {
   
@@ -19,10 +20,10 @@ const SearchBar = () => {
 
   
     return (
-    <div>
-      <form onSubmit={handleSubmit}>
-           <input id="search" onChange={handleChange} type="text"/>
-           <input  type="submit"/>
+    <div className={styles.contsearchbar}>
+      <form className={styles.continputs} onSubmit={handleSubmit}>
+           <input placeholder=   '    introducir nombre'  id="search" onChange={handleChange} type="text"/>
+           <button  type ="submit"> Buscar</button>
       </form>
     </div>
   )

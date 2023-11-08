@@ -1,0 +1,26 @@
+.contnavbar {
+    background-color: indianred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    width: 100%;
+  }
+  
+.contlinks {
+    display: flex;
+    
+  }
+  
+  .contlinks > * {
+    margin-right: 50px; /* Ajusta el valor del margen según tus necesidades */
+   
+    font-size:x-large;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   
+    color:rgb(14, 14, 14)
+  }
+  
+  
+  

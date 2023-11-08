@@ -16,6 +16,22 @@ const createVideogame = async (
 ) => {
     console.log("Valor de name recibido:", name);
   
+    const existingVideogame = await Videogames.findOne({
+        where: {
+          [Op.or]: [
+            { genres: { [Op.contains]: genres } },
+            { platforms: { [Op.contains]: platforms } }
+          ],
+        },
+      });
+    
+      if (existingVideogame) {
+        // Mostrar una alerta si ya existe un videojuego con los mismos géneros o plataformas
+        alert("¡Ya existe un videojuego con los mismos géneros o plataformas!");
+        return null; // Retorna null u otra cosa para indicar que la creación no fue exitosa
+      }
+    
+    
     if (Array.isArray(genres) && typeof genres[0] === 'string') {
         // Convertir los strings en objetos con el formato correcto
         genres = genres.map(genre => ({ name: genre }));
@@ -75,29 +91,7 @@ const videogamesDb = await Videogames.findAll({
 return infoEstructurada
 }
 
-// const getVideogamesApi = async ()=>{
-//     const{data}= await axios.get(
-//        `https://api.rawg.io/api/games?key=${API_KEY}`
-//         )
-//         const videogamesApi = data.results;
 
-//         const infoEstructurada = videogamesApi.map((videogame) => {
-//             return {
-//                 id: videogame.id,
-//                 name: videogame.name,
-//                 description: videogame.description,
-//                 platforms: videogame.platforms.map(platform => platform.platform.name),
-//                 background_image: videogame.background_image,
-//                 released: videogame.released,
-//                 rating: videogame.rating,
-//                 genres: videogame.genres.map(genre => genre.name)
-//             };
-//         });
-
-//         return infoEstructurada;
-        
-        
-// }
 
 const getVideogamesApi = async () => {
     let allVideogames = [];
@@ -123,7 +117,7 @@ const getVideogamesApi = async () => {
             };
         });
 
-        // Concatenar los resultados de esta página al array principal
+      
         allVideogames = [...allVideogames, ...infoEstructurada];
     }
 

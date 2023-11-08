@@ -9,3 +9,5 @@ export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN "
 export const RESET = "RESET"
 export const ORD_ALFAB = "ORD_ALFAB";
 export const ORD_RATING = "ORD_ALFAB";
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
+export const SET_PAGE = "SET_PAGE";

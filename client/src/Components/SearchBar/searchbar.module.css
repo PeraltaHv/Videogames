@@ -1,0 +1,21 @@
+.contsearchbar{
+display: flex;
+
+}
+.continputs{
+    display: flex;
+    margin-left: 60px;
+}
+.continputs > *{
+    margin-right: 10px; 
+}
+
+
+.continputs button{
+   height: 25px;
+   width: 100px;
+   background-color: rgb(7, 7, 7);
+   border-radius: 10px;
+   color:aliceblue
+
+}

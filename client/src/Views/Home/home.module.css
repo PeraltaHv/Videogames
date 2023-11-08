@@ -90,3 +90,36 @@ body::after {
     gap: 20px;
     width: 50%;
 }
+.contcards{
+    margin: 0 auto;
+    display: block;
+}
+.paginado {
+    text-align: center;
+  }
+  
+  .paginationList {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  .page {
+    background-color: #f7f4f0;
+    color: rgb(30, 30, 26);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #090909;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Agregar transición de color de fondo */
+  }
+  
+  .page:focus, .page:hover {
+    background-color: #8d8b87; /* Cambiar color de fondo al enfocar o pasar el mouse */
+  }
+  

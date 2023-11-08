@@ -4,10 +4,10 @@ import { Link } from "react-router-dom"
 
 
 const Card = ({ info }) => {
-
+console.log('ID del videojuego:', info.id);
   return (
 
-    <Link to={`/detail/${info.id}`} className={styles.link}>
+    <Link to={`/details/${info.id}`} className={styles.link} >
       <div className={styles.cardcont} >
 
         <p>{info.name}</p>
@@ -21,8 +21,7 @@ const Card = ({ info }) => {
               {index < info.genres.length - 1 && ' '}
             </span>
         ))}
-      
-         
+
 
         </div>
         <p> Rating: {info.rating}</p>

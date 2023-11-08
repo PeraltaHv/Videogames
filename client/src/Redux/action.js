@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_GENRES ,GET_PLATFORMS, SEARCH_VIDEOGAME,GET_VIDEOGAME,GET_DETAILS,PAGINATE,FILTER_BY_GENRE,RESET,FILTER_BY_ORIGIN,ORD_ALFAB,ORD_RATING} from "./action-types"
+import { GET_GENRES ,SET_PAGE,CLEAN_DETAIL,GET_PLATFORMS, SEARCH_VIDEOGAME,GET_VIDEOGAME,GET_DETAILS,PAGINATE,FILTER_BY_GENRE,RESET,FILTER_BY_ORIGIN,ORD_ALFAB,ORD_RATING} from "./action-types"
 
   
 export function postVideogame(form){
@@ -91,7 +91,7 @@ export function getVideogameById(id){
       type:GET_DETAILS,
       payload:response.data
     })
-    console.log(response); 
+    console.log(response.data); 
     
 
 } catch (error) {
@@ -163,3 +163,15 @@ export function ordenarRating(order){
       
   }
 }
+export function cleanDetail(order){
+  return { type:CLEAN_DETAIL }
+
+ 
+}
+
+export function pageChange(newPage)  {
+  return {
+    type: SET_PAGE,
+    payload: newPage,
+  };
+};
